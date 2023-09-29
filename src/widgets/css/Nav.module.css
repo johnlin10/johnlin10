@@ -1,0 +1,62 @@
+/* 頂部欄 */
+nav {
+  z-index: 5000;
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 0;
+  height: 80px;
+  width: 100%;
+  background: var(--theme);
+}
+nav > div {
+  display: flex;
+  justify-content: space-between;
+  height: 54px;
+  width: calc(100% - 38px);
+}
+/* 頂部欄網頁標誌 */
+nav > div > .icon {
+  display: flex;
+  height: 54px;
+  width: 54px;
+  background: var(--theme-L2);
+  border-radius: 27px;
+  -webkit-border-radius: 27px;
+  -moz-border-radius: 27px;
+  -ms-border-radius: 27px;
+  -o-border-radius: 27px;
+}
+/* 頂部欄跳轉選項區域 */
+nav > div > .NavLinkView {
+  height: 100%;
+}
+.NavLinkView ul {
+  display: flex;
+}
+/* 跳轉選項 */
+.NavLinkView ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 54px;
+  margin-left: 10px;
+  padding: 0 24px;
+  letter-spacing: 5px;
+  border-radius: 27px;
+  -webkit-border-radius: 27px;
+  -moz-border-radius: 27px;
+  -ms-border-radius: 27px;
+  -o-border-radius: 27px;
+}
+/* 選項icon */
+.NavLinkView ul li svg {
+  margin: 0 10px 0 0;
+}
+/* 選項文字 */
+.NavLinkView ul li span {
+  font-size: 0.8rem;
+  color: var(--font-white);
+}

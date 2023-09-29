@@ -1,25 +1,35 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
+  "id": "Johnlin",
+  "background_color": "#1B262C",
+  "theme_color": "#0F4C75",
+  "purpose": "any",
+  "display": "standalone",
+  "start_url": "https://johnlin.web.app/",
+  "orientation": "portrait",
+  "description": "分享生活與科技時事",
+  "gcm_sender_id": "453705525268",
+  "short_name": "johnlin10",
+  "name": "Johnlin",
+  "splash_pages": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "url": "https://johnlin.web.app/",
+      "name": "Johnlin",
+      "description": "分享生活與科技時事",
+      "icons": [
+        {
+          "src": "",
+          "type": "/image/png",
+          "sizes": "1080x1080"
+        }
+      ]
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "icons": [
+    {
+      "src": "",
+      "type": "/image/png",
+      "sizes": "1080x1080",
+      "purpose": "any"
+    }
+  ]
 }

@@ -1,0 +1,55 @@
+/* 首頁 */
+#home > div {
+  display: flex;
+  flex-direction: column;
+}
+
+#home > div > section {
+  display: flex;
+  flex-direction: column;
+}
+
+section.homeTop {
+  justify-content: center;
+  align-items: center;
+  margin-top: -92px;
+  height: 100%;
+  /* background: linear-gradient(-45deg, #edecbd, #f7c8c8, #d8ddf9, #c9fbd9); */
+  background: #ffffff;
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
+}
+
+h1.header_title {
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+#introduction > h1 {
+  font-size: 5rem;
+  font-weight: bold;
+  margin: 3rem 0;
+}
+.introductionSpan {
+  font-size: 1rem;
+  margin: 2rem 0 50% 0;
+}
+
+#home span {
+  width: 100%;
+  color: #8187ad;
+  text-align: center;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
