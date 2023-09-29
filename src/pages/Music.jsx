@@ -7,7 +7,7 @@ export default function Music(props) {
   const musicAssets = [
     {
       name: '裹著心的光',
-      singer: '林俊頡',
+      singer: '林俊傑',
       audioLink:
         'https://firebasestorage.googleapis.com/v0/b/johnlin10-web.appspot.com/o/assets%2Fmusic%2Fmusic.wav?alt=media&token=6c02162f-b866-4116-86a4-e2d858a020f6&_gl=1*13pkknq*_ga*MTQ4ODkzOTE5NC4xNjgxMDM2Njg5*_ga_CW55HF8NVT*MTY5NjAwNDAwOC4xODkuMS4xNjk2MDA0NzM1LjUyLjAuMA..',
       lrc: `[00:00.000] 作詞 : 易家揚
@@ -184,12 +184,13 @@ export default function Music(props) {
 
   return (
     <div className={css.view}>
-      <h1>播放器</h1>
+      <h1>{musicAssets[playIndex].name}</h1>
+      <p>{musicAssets[playIndex].singer}</p>
       <audio
         src={musicAssets[playIndex].audioLink}
         controls
         onTimeUpdate={(e) => updatePlayProgress(e.target.currentTime)}></audio>
-      <p>{playerProgress}</p>
+      {/* <p>{playerProgress}</p> */}
       <div className={css.container}>
         {/* <button onClick={() => parseLrc()}>parseLrc</button> */}
         <ul
