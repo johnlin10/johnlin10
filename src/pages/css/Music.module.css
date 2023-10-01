@@ -38,8 +38,10 @@ ul.lrc_list {
 ul.lrc_list > li {
   display: flex;
   align-items: center;
+  margin: 18px 0;
+  padding: 0 6px;
   height: 32px;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: bolder;
   color: #a1a1a1;
   transition: 1s cubic-bezier(0.23, 1, 0.32, 1);
@@ -55,8 +57,7 @@ ul.lrc_list > li:hover {
   -webkit-filter: blur(0);
 }
 ul.lrc_list > li.actv {
-  margin: 18px 0;
-  font-size: 2rem;
+  font-size: 1.6rem;
   color: #3f3f3f;
   filter: blur(0);
   -webkit-filter: blur(0);

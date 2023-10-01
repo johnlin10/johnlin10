@@ -15,6 +15,11 @@ export default function Music(props) {
 [00:05.000] 編曲 : 吳慶隆
 [00:07.000] 製作人 : 林俊傑
 [00:09.000] 
+[00:11.500] 來自各個城市的你們 謝謝你們 
+[00:13.500] Thank you
+[00:17.051] 在音樂的路上 我一直堅持著
+[00:21.735] 我有你們 我非常的幸福
+[00:25.334] 
 [00:29.556]光 拿烏雲揉成團
 [00:34.360]像鯨魚吻著浪
 [00:38.000]叫我 和你 去飛翔
@@ -25,6 +30,9 @@ export default function Music(props) {
 [01:08.174]有夢就聽得到 用愛呼應感嘆
 [01:14.567]心裡裹著光 的人 世界 很寬
 [01:22.243]出發就走得到 來時路不會被 剪斷
+[01:34.543]Wu Wu
+[01:38.343]我愛你們
+[01:39.343]
 [01:45.759]當 那無名領頭羊
 [01:50.500]替明天找希望
 [01:53.988]說嘿 有我 別心慌
@@ -44,28 +52,10 @@ export default function Music(props) {
 [03:34.076]心裡裹著光 的人 初衷 不換
 [03:41.602]誓言讓心不老 帶那些夢探索 遠方
 [03:52.267]問那些年的夢 有多燙
-[04:01.410] 配唱編寫 : 林俊傑
-[04:02.853] 製作協力 : 黃冠龍 ALEX.D/周信廷 SHiN CHOU/蔡沛蓁 Patti Tsai
-[04:04.316] 鍵盤 : 吳慶隆
-[04:05.769] 弦樂編寫 : 吳慶隆
-[04:07.212] 弦樂錄音監督 : 胡靜成
-[04:08.665] 第一小提琴 : 張浩/龐闊/張琴/楊爽/劉睿/顏柯/張晗/高言
-[04:10.118] 第二小提琴 : 簡培/侯宇紅/閆紅/李若雲/高一凡/倪冰雪
-[04:11.561] 中提琴 : 李輝/李季澤/畢芳/方振華
-[04:13.014] 大提琴 : 張平/郎瑩/王瑤/石雲博
-[04:14.467] 大提琴獨奏 : 郎瑩
-[04:15.910] 吉他 : 黃冠龍 ALEX.D
-[04:17.363] 低音吉他 : 甯子達 Michael Ning
-[04:18.816] 鼓 : Brendan Buckley
-[04:20.269] 和聲編寫 : 林俊傑
-[04:21.712] 和聲 : 林俊傑
-[04:23.165] 錄音室 : THE JFJ SINGULARITY (Taipei)/JFJ SANCTUARY (Taipei)/Reflector Music Studio (Los Angeles)/九紫天成錄音棚 (Beijing)
-[04:24.618] 錄音師 : 林俊傑/黃冠龍 ALEX.D/Brendan Buckley/劉璆
-[04:26.061] 混音室 : mixHaus Studios (Los Angeles)
-[04:27.514] 混音師 : Richard Furch
-[04:28.967] 後期母帶處理製作人 : 林俊傑
-[04:30.410] 後期母帶處理錄音室 : 饅頭音樂工作室
-[04:31.863] 後期母帶處理錄音師 : 孫仲舒`,
+[04:05.063]Wu Wu 
+[04:09.063]
+[04:16.363]聖所的人在哪裡
+[04:21.363]`,
     },
   ]
   const lrc = `[00:00.000] 作詞 : 易家揚
@@ -169,7 +159,7 @@ export default function Music(props) {
     for (let i = lrcArray.length - 1; i >= 0; i--) {
       if (lrcArray[i]?.timestramp < curTime) {
         setHighLightIndex(i)
-        setTranslateY(`calc(20vh - ${32 * i}px)`)
+        setTranslateY(`calc(20vh - ${50 * i}px)`)
         break
       }
     }
@@ -190,7 +180,7 @@ export default function Music(props) {
         src={musicAssets[playIndex].audioLink}
         controls
         onTimeUpdate={(e) => updatePlayProgress(e.target.currentTime)}></audio>
-      {/* <p>{playerProgress}</p> */}
+      <p>{playerProgress}</p>
       <div className={css.container}>
         {/* <button onClick={() => parseLrc()}>parseLrc</button> */}
         <ul
