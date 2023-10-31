@@ -2,7 +2,8 @@ import React, { useEffect, useState, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useLocation } from 'react-router-dom'
 import { useNavigate, Navigate, Route, Routes, Outlet } from 'react-router-dom'
-import './App.css'
+import './App.scss'
+import style from './App.module.scss'
 
 // Service Worker
 import { serviceWorkerRegistration } from './serviceWorkerRegistration'
@@ -20,6 +21,7 @@ import Footer from './widgets/Footer'
 
 // 頁面架構組件
 function App() {
+  const location = useLocation()
   // 自動檢查更新
   const [updateAvailable, setUpdateAvailable] = useState(false)
   useEffect(() => {
@@ -85,11 +87,38 @@ function App() {
     navigate(page)
   }
 
+  // 偵測是否在頁面頂部
+  const [isTop, setIsTop] = useState(true)
+  let lastIsTop = true
+  useEffect(() => {
+    setTimeout(() => {
+      const container = document.querySelector('main').querySelector('div')
+
+      const handleScroll = () => {
+        const scrollTop = container.scrollTop
+        const newIsTop = scrollTop <= 30 // 距離頂部小於等於 30px
+        console.log(scrollTop)
+
+        if (newIsTop !== lastIsTop) {
+          setIsTop(newIsTop)
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+          lastIsTop = newIsTop
+        }
+      }
+
+      console.log(container)
+      container.addEventListener('scroll', handleScroll)
+
+      return () => {
+        container.removeEventListener('scroll', handleScroll)
+      }
+    }, 500)
+  }, [location])
+
   return (
     <>
-      <Nav navigateClick={navigateClick} />
-      <Footer />
-      <main>
+      <Nav navigateClick={navigateClick} isTop={isTop} />
+      <main className={isTop ? '' : style.isTop}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/myPost" element={<PersonalPost />} />
@@ -114,6 +143,7 @@ function App() {
           </div>
         </div>
       )}
+      <Footer />
     </>
   )
 }

@@ -1,12 +1,12 @@
 :root {
-  --theme: #ef5b0c;
-  --theme-L1: #f67530;
-  --theme-L2: #f79059;
-  --theme-L3: #ffb58e;
+  --theme: #23292d;
+  --theme-L1: #2f373c;
+  --theme-L2: #3c464c;
+  --theme-L3: #455157;
 }
 
 :root {
-  --bg: #fbf3ef;
+  --bg: #ebf3f7;
 }
 
 :root {

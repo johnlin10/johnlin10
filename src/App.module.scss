@@ -1,0 +1,6 @@
+:global(nav):not(:hover) ~ :global(main).isTop {
+  padding: 12px 0 0 0;
+}
+// :global(main).isTop {
+//   padding: 24px 0 0 0;
+// }

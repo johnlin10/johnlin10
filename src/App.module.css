@@ -1,0 +1,1 @@
+:global(nav):not(:hover)~:global(main).isTop{padding:12px 0 0 0}

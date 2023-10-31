@@ -1,32 +1,29 @@
-import css from './css/Nav.module.css'
+import style from './css/Nav.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faNewspaper } from '@fortawesome/free-solid-svg-icons'
+
 // 頂部攔組件
 export default function Nav(props) {
   return (
-    <nav>
+    <nav className={`${props.isTop ? '' : style.isTop}`}>
       <div>
         <div
-          className={css.icon}
-          onClick={() => props.navigateClick('/')}></div>
-        <div className={css.NavLinkView}>
+          className={style.icon}
+          onClick={() => props.navigateClick('/')}
+        ></div>
+        <div className={style.NavLinkView}>
           <ul>
             <li onClick={() => props.navigateClick('/myPost')}>
-              <span>
-                <FontAwesomeIcon icon="fa-solid fa-user" />
-                我的文章
-              </span>
+              <FontAwesomeIcon icon={faNewspaper} />
+              <span>文章</span>
             </li>
             <li onClick={() => props.navigateClick('/techPost')}>
-              <span>
-                <FontAwesomeIcon icon="fa-solid fa-microchip" />
-                科技新聞
-              </span>
+              <FontAwesomeIcon icon="fa-solid fa-microchip" />
+              <span>新聞</span>
             </li>
             <li onClick={() => props.navigateClick('/about')}>
-              <span>
-                <FontAwesomeIcon icon="fa-solid fa-code" />
-                開發歷程
-              </span>
+              <FontAwesomeIcon icon="fa-solid fa-code" />
+              <span>項目</span>
             </li>
           </ul>
         </div>
