@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useState, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useLocation } from 'react-router-dom'
@@ -96,9 +97,7 @@ function App() {
 
       const handleScroll = () => {
         const scrollTop = container.scrollTop
-        const newIsTop = scrollTop <= 30 // 距離頂部小於等於 30px
-        console.log(scrollTop)
-
+        const newIsTop = scrollTop <= 30
         if (newIsTop !== lastIsTop) {
           setIsTop(newIsTop)
           // eslint-disable-next-line react-hooks/exhaustive-deps

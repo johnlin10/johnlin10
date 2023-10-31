@@ -1,4 +1,5 @@
 import style from './css/Home.module.scss'
+import CopyRight from '../widgets/CopyRight'
 
 // 首頁組件
 export default function Home(props) {
@@ -13,6 +14,7 @@ export default function Home(props) {
         <h1 id="introductionTitle">介紹</h1>
         <span className={style.introductionSpan}>網站建設中...</span>
       </section>
+      <CopyRight />
     </div>
   )
 }
