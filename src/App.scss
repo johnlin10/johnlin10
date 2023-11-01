@@ -8,11 +8,16 @@ body {
   font-family: 'Noto Sans TC', 'Prompt';
   font-size: 16px;
   color: #333;
-  background: var(--bg);
+  background: var(--theme);
   height: 100%;
   width: 100%;
   overflow: hidden;
   /* scroll-behavior: smooth; */
+}
+textarea,
+input {
+  font-family: 'Noto Sans TC', 'Prompt';
+  outline: none;
 }
 ul,
 ol {
@@ -55,6 +60,7 @@ main {
   width: 100%;
   padding: 80px 0 0 0;
   overflow-y: hidden;
+  background-color: var(--bg);
 
   @media (max-width: 600px) {
     padding: 60px 0 0 0;
