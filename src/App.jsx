@@ -114,9 +114,17 @@ function App() {
     }, 500)
   }, [location])
 
+  const [subTitle, setSubTitle] = useState('')
+  const [subDescription, setSubDescription] = useState('')
+
   return (
     <>
-      <Nav navigateClick={navigateClick} isTop={isTop} />
+      <Nav
+        navigateClick={navigateClick}
+        isTop={isTop}
+        subTitle={subTitle}
+        subDescription={subDescription}
+      />
       <main className={isTop ? '' : style.isTop}>
         <Routes>
           <Route path="/" element={<Home />} />

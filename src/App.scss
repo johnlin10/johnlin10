@@ -59,8 +59,8 @@ main {
   height: 100%;
   width: 100%;
   padding: 80px 0 0 0;
+  background-color: var(--theme);
   overflow-y: hidden;
-  background-color: var(--bg);
 
   @media (max-width: 600px) {
     padding: 60px 0 0 0;
@@ -77,7 +77,13 @@ main > div {
   align-items: center;
   height: 100%;
   width: 100%;
+  background-color: var(--bg);
   overflow-y: scroll;
+  transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  -moz-transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  -ms-transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  -o-transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
 }
 main > div > section {
   padding: 12px;

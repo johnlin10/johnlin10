@@ -2,6 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import style from './css/PersonalPost.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+
+import { Editor, EditorState } from 'draft-js'
+import 'draft-js/dist/Draft.css'
+
 // 個人文章頁面組件
 export default function PersonalPost(props) {
   const [postViewerId, setPostViewerId] = useState() // 存放當前正在閱讀的文章 ID
@@ -124,19 +128,54 @@ function PostViewer({ posts, post, closePost, setPostExample }) {
   const [isEdited, setIsEdited] = useState(false)
   const [currentContent, setCurrentContent] = useState(post)
 
+  /**
+   * 修改 state 狀態中的值為輸入值 - 在輸入框內容改變時觸發
+   * @param {number} index - 段落索引
+   * @param {Event} e - 事件對象
+   */
   const handleContentChange = (index, e) => {
-    const textarea = e.target
-    textarea.style.height = 'auto' // 重置高度為自動
-
-    const scrollHeight = textarea.scrollHeight
-    textarea.style.height = `${scrollHeight}px` // 設定高度為scrollHeight
-
     const newContent = { ...currentContent }
     newContent.content[index].content = e.target.value
     setCurrentContent(newContent)
+
+    // 修改為已變更狀態
     setIsEdited(true)
+
+    setTimeout(() => {
+      resetParagraphHeight()
+    }, 0)
   }
 
+  useEffect(() => {
+    if (editMode) {
+      // 進入編輯模式時，設定所有 textarea 的高度為滾動高度
+      const textareas = document.querySelectorAll('textarea')
+      textareas.forEach((textarea) => {
+        textarea.style.height = `${textarea.scrollHeight}px`
+        textarea.style.maxHeight = `${textarea.scrollHeight}px`
+      })
+    }
+  }, [editMode])
+
+  /**
+   * 計算並套用為所有 textarea 自身的棍動高度
+   */
+  const resetParagraphHeight = () => {
+    if (editMode) {
+      // 進入編輯模式時，設定所有 textarea 的高度為滾動高度
+      const textareas = document.querySelectorAll('textarea')
+      textareas.forEach((textarea) => {
+        textarea.style = ''
+        textarea.style.height = `${textarea.scrollHeight}px`
+        textarea.style.maxHeight = `${textarea.scrollHeight}px`
+      })
+    }
+  }
+
+  /**
+   * 移除傳入索引的段落
+   * @param {number} index - 從編輯器傳入的段落索引
+   */
   const handleDeleteParagraph = (index) => {
     const newContent = [...currentContent.content]
     newContent.splice(index, 1)
@@ -149,26 +188,44 @@ function PostViewer({ posts, post, closePost, setPostExample }) {
     setIsEdited(true)
   }
 
+  /**
+   * 切換端落的樣式
+   * @param {number} index - 段落索引
+   * @param {Event} e - 事件對象
+   */
   const handleTypeChange = (index, e) => {
     const newContent = { ...currentContent }
     newContent.content[index].type = e.target.value
     setCurrentContent(newContent)
     setIsEdited(true)
+
+    setTimeout(() => {
+      resetParagraphHeight()
+    }, 0)
   }
 
+  /**
+   *
+   * @param {number} index - 段落索引
+   * @param {Event} e - 事件對象
+   */
   const handleImgUrlChange = (index, e) => {
-    const textarea = e.target
-    textarea.style.height = 'auto' // 重置高度為自動
-    const scrollHeight = textarea.scrollHeight
-    textarea.style.height = `${scrollHeight}px` // 設定高度為scrollHeight
-
     const newContent = { ...currentContent }
     newContent.content[index].content = e.target.value
     setCurrentContent(newContent)
     setIsEdited(true)
+
+    setTimeout(() => {
+      resetParagraphHeight()
+    }, 0)
   }
 
   const inputRefs = useRef([])
+  /**
+   * 處理按鍵按下事件
+   * @param {Event} e - 事件對象
+   * @param {number} index - 段落的索引
+   */
   const handleOnKeyDown = (e, index) => {
     if (e.key === 'Enter' && e.keyCode !== 229) {
       e.preventDefault() // 防止換行
@@ -204,6 +261,21 @@ function PostViewer({ posts, post, closePost, setPostExample }) {
         }
       }, 0)
     }
+
+    if (editMode) {
+      // 進入編輯模式時，設定所有 textarea 的高度為滾動高度
+      setTimeout(() => {
+        const textareas = document.querySelectorAll('textarea')
+        textareas.forEach((textarea) => {
+          textarea.style.height = `${textarea.scrollHeight}px`
+          textarea.style.maxHeight = `${textarea.scrollHeight}px`
+        })
+      }, 0)
+    }
+
+    setTimeout(() => {
+      resetParagraphHeight()
+    }, 0)
   }
 
   const handleSaveChanges = () => {
@@ -251,6 +323,7 @@ function PostViewer({ posts, post, closePost, setPostExample }) {
         <h1>{currentContent.title}</h1>
         <p>{currentContent.description}</p>
       </div>
+      <MyEditor />
       <div className={style.article_view}>
         {currentContent.content.map((item, index) => {
           let element = ''
@@ -338,6 +411,7 @@ function PostViewer({ posts, post, closePost, setPostExample }) {
                   <>
                     <textarea
                       ref={(el) => (inputRefs.current[index] = el)}
+                      className={style.img}
                       value={item.content}
                       onChange={(e) => handleImgUrlChange(index, e)}
                       onKeyDown={(e) => handleOnKeyDown(e, index, inputRefs)}
@@ -360,7 +434,7 @@ function PostViewer({ posts, post, closePost, setPostExample }) {
               {element}
               {editMode ? (
                 <select
-                  className=""
+                  className={style.paragraph_type}
                   name=""
                   id=""
                   value={item.type}
@@ -385,4 +459,12 @@ function PostViewer({ posts, post, closePost, setPostExample }) {
       </div>
     </article>
   )
+}
+
+function MyEditor() {
+  const [editorState, setEditorState] = useState(() =>
+    EditorState.createEmpty()
+  )
+
+  return <Editor editorState={editorState} onChange={setEditorState} />
 }

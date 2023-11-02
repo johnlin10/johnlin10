@@ -96,9 +96,11 @@
   }
 
   > .article_view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 48px 0;
     width: 100%;
-    max-width: 720px;
 
     @media (max-width: 600px) {
       padding: 24px 18px;
@@ -109,25 +111,36 @@
       flex-direction: column;
       justify-content: center;
       position: relative;
+      width: 100%;
+      max-width: 720px;
+
+      &:hover {
+        > select.paragraph_type {
+          opacity: 1;
+        }
+      }
+      > select.paragraph_type {
+        opacity: 0;
+      }
 
       // 閱讀模式
       > h1 {
         color: var(--theme);
         font-size: 1.5rem;
         font-weight: 900;
-        margin-top: 1.5rem;
+        margin-top: 18px;
       }
       > h2 {
         color: var(--theme);
         font-size: 1.3rem;
         font-weight: 900;
-        margin-top: 1.3rem;
+        margin-top: 16px;
       }
       > h3 {
         color: var(--theme);
         font-size: 1.1rem;
         font-weight: 900;
-        margin-top: 1.1rem;
+        margin-top: 14px;
       }
       > p {
         color: var(--theme);
@@ -174,7 +187,10 @@
         -o-border-radius: 6px;
       }
       > textarea {
+        display: flex;
+        align-items: center;
         height: max-content;
+        max-height: 36px;
         width: 100%;
         background-color: #ffffff00;
         resize: none;
@@ -183,36 +199,45 @@
           color: var(--theme);
           font-size: 1.5rem;
           font-weight: 900;
-          margin-top: 1rem;
+          margin-top: 5px;
 
           & ~ select {
-            top: 1rem;
+            margin-top: 5px;
           }
         }
         &.hd2 {
           color: var(--theme);
           font-size: 1.3rem;
           font-weight: 900;
-          margin-top: 0.8rem;
+          margin-top: 16px;
 
           & ~ select {
-            top: 0.8rem;
+            margin-top: 16px;
           }
         }
         &.hd3 {
           color: var(--theme);
           font-size: 1.1rem;
           font-weight: 900;
-          margin-top: 0.6rem;
+          margin-top: 13px;
 
           & ~ select {
-            top: 0.6rem;
+            margin-top: 13px;
           }
         }
         &.p {
           color: var(--theme);
           font-size: 1rem;
-          margin-top: 0.3rem;
+          margin-top: 1rem;
+
+          & ~ select {
+            top: 0.3rem;
+          }
+        }
+        &.img {
+          color: var(--theme);
+          font-size: 1rem;
+          margin-top: 1rem;
 
           & ~ select {
             top: 0.3rem;
