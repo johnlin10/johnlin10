@@ -28,10 +28,6 @@ export default function Nav(props) {
           </ul>
         </div>
       </div>
-      <div className={style.subHeader}>
-        <h1>{props.subTitle}</h1>
-        <h3>{props.subDescription}</h3>
-      </div>
     </nav>
   )
 }

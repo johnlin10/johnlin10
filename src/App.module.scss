@@ -3,6 +3,13 @@
 }
 
 :global(main) {
+  &.haveSubHeader {
+    padding: 80px + 74px + 12px 0 0 0;
+    @media (max-width: 600px) {
+      padding: 60px + 74px + 12px 0 0 0;
+    }
+  }
+
   div.copyRight {
     width: 100%;
   }

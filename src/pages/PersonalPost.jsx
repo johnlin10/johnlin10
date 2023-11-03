@@ -205,7 +205,7 @@ function PostViewer({ posts, post, closePost, setPostExample }) {
   }
 
   /**
-   *
+   * 切換端落的樣式
    * @param {number} index - 段落索引
    * @param {Event} e - 事件對象
    */
