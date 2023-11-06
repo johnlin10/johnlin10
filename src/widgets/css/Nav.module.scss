@@ -1,0 +1,158 @@
+/* 頂部欄 */
+nav {
+  z-index: 5000;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  padding: 13px 0;
+  left: 0;
+  top: 0;
+  min-height: 80px;
+  width: 100%;
+  background: var(--theme);
+
+  @media (max-width: 600px) {
+    min-height: 60px;
+  }
+
+  * {
+    transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    -webkit-transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    -moz-transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    -ms-transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    -o-transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  &.isTop:not(:hover) {
+    height: 12px;
+
+    > div {
+      // 導航欄收縮後網站 icon 的樣式
+      > .icon {
+        margin-left: -12px;
+        margin-top: 27px + 12px;
+        height: 48px;
+        width: 48px;
+
+        @media (max-width: 600px) {
+          margin-top: 27px + 6px;
+          margin-left: -6px;
+        }
+      }
+
+      *:not(.icon) {
+        opacity: 0.3;
+        user-select: none;
+        pointer-events: none;
+      }
+    }
+  }
+
+  > div {
+    display: flex;
+    justify-content: space-between;
+    height: 54px;
+    width: calc(100% - 38px);
+
+    @media (max-width: 600px) {
+      height: 42px;
+      width: calc(100% - 24px);
+    }
+
+    &.subHeader {
+      display: flex;
+      flex-direction: column;
+      padding-top: 12px;
+      height: max-content;
+
+      > h1 {
+        color: #ffffffe5;
+      }
+      > h3 {
+        color: #ffffffa1;
+      }
+    }
+
+    /* 頂部欄網頁標誌 */
+    > .icon {
+      display: flex;
+      height: 54px;
+      width: 54px;
+      background: var(--theme-L2);
+      border-radius: 27px;
+
+      @media (max-width: 600px) {
+        height: 42px;
+        width: 42px;
+      }
+
+      -webkit-border-radius: 27px;
+      -moz-border-radius: 27px;
+      -ms-border-radius: 27px;
+      -o-border-radius: 27px;
+      transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+      -webkit-transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+      -moz-transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+      -ms-transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+      -o-transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    > .NavLinkView {
+      height: 100%;
+
+      /* 頂部欄跳轉選項區域 */
+      > ul {
+        display: flex;
+        height: 100%;
+
+        /* 跳轉選項 */
+        > li {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          margin-left: 10px;
+          padding: 0 24px;
+          letter-spacing: 5px;
+
+          @media (max-width: 600px) {
+            padding: 0 12px;
+          }
+
+          /* 選項icon */
+          > svg {
+            margin: 0 10px 0 0;
+            font-size: 1rem;
+            color: var(--font-white);
+
+            @media (max-width: 600px) {
+              margin: 0;
+              font-size: 1.2rem;
+            }
+          }
+          /* 選項文字 */
+          > span {
+            font-size: 1rem;
+            color: var(--font-white);
+
+            @media (max-width: 600px) {
+              display: none;
+            }
+          }
+
+          border-radius: 27px;
+          -webkit-border-radius: 27px;
+          -moz-border-radius: 27px;
+          -ms-border-radius: 27px;
+          -o-border-radius: 27px;
+        }
+      }
+    }
+  }
+  transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  -moz-transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  -ms-transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  -o-transition: 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
