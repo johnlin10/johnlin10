@@ -10,5 +10,5 @@ I am a high school student who is learning website full stack development.
 Welcome to teach me!
 
 我正在建設我的個人網站：  
-I am in the process of building my personal website:  
+I am in the process of building my website:  
 [johnlin.web.app](https://johnlin.web.app)
